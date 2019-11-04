@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   constructor(public authGuardService: AuthGuardService ) { }
 
   ngOnInit() {
+    console.log("HomeCOmponent")
   }
 
 }

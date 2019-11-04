@@ -17,6 +17,7 @@ export class SignUpComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    console.log("sign up")
   }
 
   onSubmit( f: NgForm){
