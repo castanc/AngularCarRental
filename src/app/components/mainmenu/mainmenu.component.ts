@@ -21,4 +21,6 @@ export class MainmenuComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     this.carRentalService.Save();
   }
+
+
 }

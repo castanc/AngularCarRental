@@ -1,0 +1,9 @@
+validations
+https://codeburst.io/angular-4-custom-validation-for-template-based-forms-b7dee9be48a6
+
+anguylar validations\
+https://www.pluralsight.com/guides/validating-angular-template-driven-forms
+
+
+angular material design
+https://www.youtube.com/watch?v=jUfEn032IL8&feature=youtu.be

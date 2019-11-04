@@ -1,0 +1,86 @@
+<h3>Sign Up</h3>
+
+<form (ngSubmit)="onSubmit(f2)" #f2="ngForm">
+
+    <div class="form-group">
+    <label>User Name</label>
+    <input class="form-control input-lg"
+    type="text" 
+    placeholder="Customer User Name" 
+    ngModel
+    name = "userName"
+    required
+    #userName="ngModel">
+        <span class="help-block" *ngIf="!userName.valid && userName.touched">Please enter your User Name</span>
+        <span class="help-block" *ngIf="userName.valid && carRentalService.CustomerExists(userName, f2)">This name is already used</span>
+    </div>
+
+    <div class="form-group">
+        <label>Last Name</label>
+        <input class="form-control input-lg"
+        type="text" 
+        placeholder="Customer Last Name" 
+        ngModel
+        name = "lastName"
+        required
+        #lastName="ngModel">
+            <span class="help-block" *ngIf="!lastName.valid && lastName.touched">Please yourLlast Name</span>
+        </div>
+    
+        <div class="form-group">
+            <label>First Name</label>
+            <input class="form-control input-lg"
+            type="text" 
+            placeholder="Customer First Name" 
+            ngModel
+            name = "firstName"
+            required
+            #firstName="ngModel">
+                <span class="help-block" *ngIf="!firstName.valid && firstName.touched">Please your User Name</span>
+            </div>
+    
+
+            <div class="form-group">
+                <label>Email</label>
+                <input class="form-control input-lg"
+                type="email" 
+                placeholder="Customer Email" 
+                ngModel
+                name = "email"
+                required
+                #email="ngModel">
+                    <span class="help-block" *ngIf="!email.valid && email.touched">Please enter valid email</span>
+                </div>
+        
+
+<div class="form-group">
+    <label>Password</label>
+        <input 
+    type="password" 
+    placeholder="Password" 
+    ngModel
+    required
+    name = "password"
+    #password="ngModel">
+    <span class="help-block" *ngIf="!password.valid && password.touched">Please your password</span>
+</div>
+
+    <div class="form-group">
+        <label>Confirm Password</label>
+            <input 
+        type="password" 
+        placeholder="Password" 
+        required
+        ngModel
+        name = "newPassword"
+        #newPassword="ngModel">
+        <span class="help-block" *ngIf="!newPassword.valid && newPassword.touched">Please confirm your password</span>
+        <span class="help-block" *ngIf="password.valid && newPassword.touched && password != newPassword">Password and Confirm password must be equal</span>
+</div>    
+
+<button 
+class="btn btn-primary" 
+[disabled]="!f2.valid"
+type="submit">Sign Up</button>
+
+</form>

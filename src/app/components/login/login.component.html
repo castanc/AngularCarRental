@@ -1,4 +1,4 @@
-<h3>Login</h3>>
+<h3>Login</h3>
 
 <form (ngSubmit)="onSubmit(f2)" #f2="ngForm">
 
@@ -6,27 +6,31 @@
     <label>User Name</label>
     <input class="form-control input-lg"
     type="text" 
-    placeholder="User Name" 
+    placeholder="Customer User Name" 
     ngModel
     name = "userName"
     required
     #userName="ngModel">
         <span class="help-block" *ngIf="!userName.valid && userName.touched">Please your User Name</span>
+        <span class="help-block" *ngIf="userName.valid && !carRentalService.CustomerExists(userName)">User doesn't exist</span>
     </div>
 
 <div class="form-group">
-<input 
+    <label>Password</label>
+        <input 
     type="password" 
     placeholder="Password" 
     ngModel
     name = "password"
     #password="ngModel">
-    <span class="help-block" *ngIf="!password.valid && password.touched">Please your password</span>
+    <span class="help-block" *ngIf="!password.valid && password.touched">Please enter your password</span>
     
-    
+</div>    
 <button 
 class="btn btn-primary" 
 [disabled]="!f2.valid"
-type="submit">Submit</button>
+type="submit">Sign In</button>
+
+<a [routerLink]="['/signup']">Not Registered? Sign Up</a>
 
 </form>

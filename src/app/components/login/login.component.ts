@@ -4,6 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 
 import { EventEmitter } from "@angular/core";
 import { AuthService } from '../../services/auth-service';
+import { CarRentalService } from '../../services/car-rental.service'
 
 
 @Component({
@@ -16,14 +17,24 @@ export class LoginComponent implements OnInit {
 
   userName: string;
   constructor(
+    public carRentalService: CarRentalService,
     private authService: AuthService,
     private router: Router) {}
 
   ngOnInit() {
     this.userName = "";
+    if ( this.carRentalService.NoCustomers )
+      this.router.navigate(['/signup']);
   }
+
+  onSubmit( f: NgForm){
+    if ( this.authService.login(f.value.userName,f.value.password))
+      this.router.navigate(['/home']);
+
+  }
+
   loginUser() {
-    this.authService.login(this.userName);
+    //this.authService.login(this.userName);
   }
 
   canLogin() {

@@ -1,0 +1,13 @@
+<div class="list-group-item d-flex justify-content-between align-items-center">
+    {{ carItem }}
+    <span class="badge badge-primary badge-pill">{{ carItem.Brand }}</span>
+    <span class="badge badge-primary badge-pill">
+        <img [src]="brandImage" class="img-responsive" style="max-height: 40px;">
+    </span>
+    <span class="badge badge-primary badge-pill">
+        <img [src]="carItem.Image" class="img-responsive" style="max-height: 40px;">
+    </span>
+    <div class="btn-group">
+    <button class="btn btn-danger" (click)="removePackage(packageItem)">Rent</button>
+    </div>
+</div>
