@@ -24,11 +24,13 @@ import {
    this.validator = this.emailValidator();  
   }  
   validate(c: FormControl) {  
+    console.log("validate")
    return this.validator(c);  
   }  
  
  emailValidator(): ValidatorFn {  
    return (c: FormControl) => {  
+     console.log("emailValidator")
     let isValid = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/.test(c.value);  
     if (isValid) {  
      return null;  

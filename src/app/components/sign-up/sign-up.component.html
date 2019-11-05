@@ -2,14 +2,6 @@
 <form (ngSubmit)="onSubmit(f2)" #f2="ngForm" >
 
 
-    <label>Directive Test ( !yash) </label>
-    <input id="employee" name=" employeename" class="form-control"
-    required maxlength="8" appForbiddenName="yash"
-    [(ngModel)]="employeeName" #employee="ngModel" >
-    <div *ngIf=" employeeName.errors.appForbiddenName">
-        EmployeeName cannot be Yash.
-      </div>
-
     <label>User Name</label>
     <div class="form-group">
     <input class="form-control input-lg"
@@ -46,34 +38,15 @@
             #firstName="ngModel">
                 <span class="help-block" *ngIf="!firstName.valid && firstName.touched">Please your User Name</span>
             </div>
+
+
+            <label class="form-control-label" for="email">Email</label>  
+            <input type="email" class="form-control" emailvalidator  name="email" 
+            [(ngModel)]="emailText" required  
+            #email="ngModel">  
+
     
-
-            <label>Email</label>
-            <div class="form-group">
-                <input class="form-control input-lg"
-                type="email" 
-                placeholder="Customer Email" 
-                ngModel
-                name = "email"
-                required
-                #email="ngModel">
-                    <span class="help-block" *ngIf="!email.valid && email.touched">Please enter valid email</span>
-                </div>
-        
-
-                <label>Password</label>
-                <div class="form-group">
-                    <input 
-                    type="password" 
-                    placeholder="Password" 
-                    ngModel
-                    required
-                    name = "password"
-                    #password="ngModel">
-                    <span class="help-block" *ngIf="!password.valid && password.touched">Please your password</span>
-                </div>
-
-                <label>Confirm Password</label>
+                 <label>Confirm Password</label>
                 <div class="form-group">
             <input 
         type="password" 

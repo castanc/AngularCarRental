@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Customer } from '../../models/customer'
 
 import { CarRentalService } from '../../services/car-rental.service'
-import { ForbiddenValidatorDirective,forbiddenEmployeeNameValidator } from '../../common/forbidden-employeename.directive'
+import { EmailValidator } from '../../common/email-validator'
 
 @Component({
   selector: 'app-sign-up',
@@ -13,7 +13,15 @@ import { ForbiddenValidatorDirective,forbiddenEmployeeNameValidator } from '../.
 })
 export class SignUpComponent implements OnInit {
 
-  employeeName: string = "";
+  email: string = "";
+  newPassword: string = ""
+  userName:  string = ""
+  lastgName: string = ""
+  firstName: string = ""
+  password: string = ""
+  emailText: string = "";
+
+
   constructor(public carRentalService: CarRentalService,
     private router: Router) { }
 
