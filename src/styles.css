@@ -51,3 +51,11 @@ hr.new5 {
   color: white;
   text-align: center;
 }
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 6px solid green;
+}
+ 
+.ng-invalid:not(form)  {
+  border-left: 6px solid red;
+}

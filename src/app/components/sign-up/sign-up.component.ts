@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-
 import { Customer } from '../../models/customer'
 
 import { CarRentalService } from '../../services/car-rental.service'
+import { ForbiddenValidatorDirective,forbiddenEmployeeNameValidator } from '../../common/forbidden-employeename.directive'
 
 @Component({
   selector: 'app-sign-up',
@@ -13,6 +13,7 @@ import { CarRentalService } from '../../services/car-rental.service'
 })
 export class SignUpComponent implements OnInit {
 
+  employeeName: string = "";
   constructor(public carRentalService: CarRentalService,
     private router: Router) { }
 
