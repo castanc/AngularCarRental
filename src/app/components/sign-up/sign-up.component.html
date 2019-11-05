@@ -45,18 +45,30 @@
             [(ngModel)]="emailText" required  
             #email="ngModel">  
 
-    
-                 <label>Confirm Password</label>
-                <div class="form-group">
-            <input 
-        type="password" 
-        placeholder="Password" 
-        required
-        ngModel
-        name = "newPassword"
-        #newPassword="ngModel">
-        <span class="help-block" *ngIf="!newPassword.valid && newPassword.touched">Please confirm your password</span>
-        <span class="help-block" *ngIf="password.valid && newPassword.touched && password != newPassword">Password and Confirm password must be equal</span>
+
+            <label>Password</label>
+            <div class="form-group">
+                <input 
+                type="password" 
+                placeholder="Password" 
+                required
+                ngModel
+                name = "password"
+                #password="ngModel">
+                <span class="help-block" *ngIf="!password.valid && password.touched">Please confirm your password</span>
+            </div>
+
+            <label>Confirm Password</label>
+            <div class="form-group">
+                <input 
+                type="password" 
+                placeholder="Password" 
+                required
+                ngModel
+                name = "newPassword"
+                #newPassword="ngModel">
+                <span class="help-block" *ngIf="!newPassword.valid && newPassword.touched">Please confirm your password</span>
+                <span class="help-block" *ngIf="password.valid && newPassword.touched && password != newPassword">Password and Confirm password must be equal</span>
 </div>    
 
 <button 
