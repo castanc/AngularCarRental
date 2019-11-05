@@ -1,13 +1,14 @@
 <div class="list-group-item d-flex justify-content-between align-items-center">
-    {{ carItem }}
-    <span class="badge badge-primary badge-pill">{{ carItem.Brand }}</span>
-    <span class="badge badge-primary badge-pill">
-        <img [src]="brandImage" class="img-responsive" style="max-height: 40px;">
+    <span >{{ carItem.Brand }}</span>
+    <span >{{ carItem.Model }}</span>
+    <span >{{ carItem.Year }}</span>
+    <span >
+        <img [src]="brandImage" class="img-responsive" style="max-height: 50px;">
     </span>
-    <span class="badge badge-primary badge-pill">
+    <span >
         <img [src]="carItem.Image" class="img-responsive" style="max-height: 40px;">
     </span>
     <div class="btn-group">
-    <button class="btn btn-danger" (click)="removePackage(packageItem)">Rent</button>
+    <button class="btn btn-success" (click)="rentCar(carItem)">Rent</button>
     </div>
 </div>

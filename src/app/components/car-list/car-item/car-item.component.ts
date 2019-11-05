@@ -12,24 +12,34 @@ import { CarRentalService } from '../../../services/car-rental.service'
 })
 export class CarItemComponent implements OnInit {
   @Input() carItem:  Car
-  brandImage: string = this.carRentalService.GetBrandImage(this.carItem.Brand);
+  brandImage: string = ""
 
-  constructor(public carRentalService: CarRentalService, private router: Router) { }
+  constructor(public carRentalService: CarRentalService, private router: Router) { 
+  }
 
   ngOnInit() {
+    this.brandImage =  this.carRentalService.GetBrandImage(this.carItem.Brand);
   }
 
 
   rentCar(car: Car): void {
-    if (confirm("Do you realy want to rent this car? " + car.Brand)) {
+    this.carRentalService.RentedCar = car;
+    this.router.navigate(['/rentcar']);
+    /*
+    if (confirm("Do you really want to rent this car? " + car.Brand)) {
       if ( this.carRentalService.Rent(car)) {
           //todo: goto thank you page
+          //this.OnCarRented.emit(car.Id)
+      }
+        
+        
       }
       else
       {
         //todo: goto error page
       }
     }
+    */
   }
-
 }
+

@@ -22,5 +22,13 @@ export class MainmenuComponent implements OnInit, OnDestroy {
     this.carRentalService.Save();
   }
 
+  GoHome(){
+    this.router.navigate(["/Home"])
+  }
+
+
+  GoHomeAdmin(){
+    this.router.navigate(["/Homeadmin"])
+  }
 
 }

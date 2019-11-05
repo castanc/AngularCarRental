@@ -1,0 +1,62 @@
+<h3>Car Rented</h3>
+<form (ngSubmit)="onSubmit(f2)" #f2="ngForm" >
+
+
+    <label>Customer</label>
+    <!-- todo: use pipes here -->
+    <div class="form-group">
+        {{carRentalService.Customer.name}}
+    </div>
+
+    <label>Car Brand</label>
+    <div class="form-group">
+        {{carRentalService.RentedCar.Brand }}
+    </div>
+    <div>
+            <span >
+                    <img [src]="brandImage" class="img-responsive" style="max-height: 50px;">
+                </span>
+                <span >
+                        <img [src]="carRentalService.RentedCar.Image" class="img-responsive" style="max-height: 50px;">
+                    </span>
+                
+    </div>
+
+
+    <label>Date From</label>
+    <div class="form-group">
+        <input class="form-control input-lg"
+        type="date" 
+        placeholder="Date From" 
+        ngModel
+        name = "dateFrom"
+        required
+        #lastName="ngModel">
+            <span class="help-block" *ngIf="!dateFrom.valid && dateFrom.touched">Please enter date from</span>
+        </div>
+    
+        <label>Date to</label>
+        <div class="form-group">
+            <input class="form-control input-lg"
+            type="date" 
+            placeholder="Date to" 
+            ngModel
+            name = "dateTo"
+            required
+            #firstName="ngModel">
+                <span class="help-block" *ngIf="!dateTo.valid && dateTo.touched">Please enter date toyour User Name</span>
+            </div>
+
+
+
+
+<button 
+class="btn btn-primary" 
+type="submit">Cancel</button>
+
+<button 
+class="btn btn-danger" 
+[disabled]="!f2.valid"
+type="submit">Rent</button>
+
+</form>
