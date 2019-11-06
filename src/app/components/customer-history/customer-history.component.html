@@ -1,0 +1,14 @@
+    <h4>Historic Rents for Customer<h4>
+    <div class="list-group-item d-flex justify-content-between align-items-center">
+        <span >
+            Brand
+        </span>
+        <span >Model</span>
+        <span >Year</span>
+        <span >
+            Car
+        </span>
+    <span>Date From</span>
+    <span>Date To</span>
+    <app-history-item *ngFor="let hItem of historicRents" [historyItem]="hItem"></app-history-item>
+    </div>
