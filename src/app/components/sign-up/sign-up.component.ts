@@ -23,6 +23,8 @@ export class SignUpComponent implements OnInit {
   isValid = false;
   message = "";
 
+  validCustomer = false;
+
 
   constructor(public carRentalService: CarRentalService,
     private router: Router) { }
@@ -37,6 +39,18 @@ export class SignUpComponent implements OnInit {
       {
         this.message = "Invalid email address";
       }
+
+    }
+
+    validateCustomer(name: string):boolean
+    {
+      this.message = "";
+      let c =this.carRentalService.GetCustomer(name);
+      this.validCustomer = ( c == null );
+      if ( !this.validCustomer )
+        this.message = "This name is already used";
+      console.log("validatecustomer", name,this.message);
+      return this.validCustomer;
 
     }
 
