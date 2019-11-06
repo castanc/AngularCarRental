@@ -27,6 +27,7 @@ export class RentCarComponent implements OnInit {
   ngOnInit() {
     this.carItem = this.carRentalService.RentedCar;
     this.customer = this.authService.getLoggedCustomer();
+    this.carRentalService.Customer = this.customer;
     console.log("rent-car-component carItem:", this.carRentalService.RentedCar)
     console.log("customer:",this.carRentalService.Customer);
     this.brandImage = this.carRentalService.GetBrandImage(this.carRentalService.RentedCar.Brand);
@@ -37,6 +38,10 @@ export class RentCarComponent implements OnInit {
     if ( this.carRentalService.Rent(this.customer.name, this.carItem.Id, f.value.dateFrom, f.value.dateTo))
       this.router.navigate(['/home']);
     else alert(  this.carRentalService.Message)  ;
+  }
+
+  cancel(){
+    this.router.navigate(['/'])
   }
 
 }

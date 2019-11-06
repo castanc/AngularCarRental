@@ -5,10 +5,6 @@
         <span >
                 <img [src]="carImage" class="img-responsive" style="max-height: 40px;">
             </span>
-            <!--
-                todo: this is not finiding the pipe
-                <span >{{ historyItem.DateStart | DateTransformPipe: historyItem.DateStart  }}</span>    
-            -->
-            <span >{{ historyItem.DateStart  }}</span>
-            <span >{{ historyItem.DateEnd }}</span>
+            <span >{{ historyItem.DateStart | elapsedTime }}</span>    
+            <span >{{ historyItem.DateEnd | elapsedTime }}</span>
     </div>

@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CarRentalService } from '../../services/car-rental.service'
 import { Car } from '../../models/car'
 import { Subscription } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 
 @Component({
@@ -12,7 +14,7 @@ import { Subscription } from 'rxjs';
 export class CarListComponent implements OnInit {
     OnCarRented: Subscription;
     AvailableCars: Array<Car> = [] 
-  constructor(public carRentalService: CarRentalService) {
+  constructor(public carRentalService: CarRentalService, public router: Router) {
 
   }
 
@@ -28,5 +30,9 @@ export class CarListComponent implements OnInit {
   OnDestroy(){
     if ( this.OnCarRented)
     this.OnCarRented.unsubscribe();
+  }
+
+  myRents(){
+    this.router.navigate(['/myrents'])
   }
 }

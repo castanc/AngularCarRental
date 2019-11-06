@@ -26,6 +26,7 @@ import { RentCarComponent } from './components/rent-car/rent-car.component';
 import { CustomerHistoryComponent } from './components/customer-history/customer-history.component';
 import { HistoryItemComponent } from './components/customer-history/history-item/history-item.component'
 import { DateTransformPipe } from './common/DateTransorm.Pipe';
+import { MyRentsComponent } from './components/my-rents/my-rents.component';
 
 
 const appRoutes: Routes = [
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
   { path: 'signup', component: SignUpComponent },
   { path: 'signupadmin', component: SignUpAdminComponent },
   { path: 'rentcar', component: RentCarComponent },
+  { path: 'myrents', component: MyRentsComponent },
   { path: '**', component: PageNotFoundComponent },
 
 ];
@@ -61,7 +63,8 @@ const appRoutes: Routes = [
     RentCarComponent,
     CustomerHistoryComponent,
     HistoryItemComponent,
-    DateTransformPipe
+    DateTransformPipe,
+    MyRentsComponent
   ],
   imports: [
     BrowserModule,

@@ -43,6 +43,8 @@ Rent(customerId: string, _carId: string, dateFrom: Date, dateTo: Date ):boolean{
     let result = false;
 
     let rentedCar = new CarRental();
+    console.log("rent. customer id:", this.Customer);
+    rentedCar.CustomerId = this.Customer.name;
     rentedCar.CarId = _carId;
     rentedCar.DateStart = dateFrom;
     rentedCar.DateEnd = dateTo;
@@ -52,11 +54,14 @@ Rent(customerId: string, _carId: string, dateFrom: Date, dateTo: Date ):boolean{
         this.Message = "Invalid rent dates. Date To must be later than date From";
     else
     {
+        console.log("Rent:", rentedCar);
         this.CarRentals.push(rentedCar)
+        console.log(this.CarRentals);
         this.Save()
         let carId = +_carId
         this.Cars[carId].Available = false
         console.log('car was rented:',this.Cars[carId] );
+        console.log("rented cars",this.CarRentals);
         this.Message = `Car was rented succesfully. Drive carefully, dont drink and drive.`
         this.OnCarRented.emit();
         result = true;

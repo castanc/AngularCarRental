@@ -1,14 +1,16 @@
-    <h4>Historic Rents for Customer<h4>
-    <div class="list-group-item d-flex justify-content-between align-items-center">
-        <span >
-            Brand
-        </span>
-        <span >Model</span>
-        <span >Year</span>
-        <span >
-            Car
-        </span>
-    <span>Date From</span>
-    <span>Date To</span>
-    <app-history-item *ngFor="let hItem of historicRents" [historyItem]="hItem"></app-history-item>
-    </div>
+
+    <div class="list-group">
+            <h4>Cars rented by me</h4>
+            <button class="btn-primary" (click)="goBack()">Back</button>
+
+            <div class="list-group-item d-flex justify-content-between align-items-center">
+                <span >
+                    Brand
+                </span>
+                <span >Car</span>
+                <span >Date Start</span>
+                <span >Date End</span>
+            </div>            
+            <app-history-item *ngFor="let hItem of historicRents" [historyItem]="hItem"></app-history-item>
+        </div>
+        

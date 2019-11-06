@@ -30,7 +30,11 @@ export class LoginComponent implements OnInit {
 
   onSubmit( f: NgForm){
     if ( this.authService.login(f.value.userName,f.value.password))
+    {
+      this.carRentalService.Customer = this.authService.Customer;
+      this.carRentalService.user = this.authService.User;
       this.router.navigate(['/home']);
+    }
 
   }
 
