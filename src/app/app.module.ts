@@ -22,7 +22,10 @@ import { CarRentalItemComponent } from './components/car-rental-list/car-rental-
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { SignUpAdminComponent } from './components/sign-up-admin/sign-up-admin.component';
 import { HomeAdminComponent} from './components/home-admin/home-admin.component';
-import { RentCarComponent } from './components/rent-car/rent-car.component'
+import { RentCarComponent } from './components/rent-car/rent-car.component';
+import { CustomerHistoryComponent } from './components/customer-history/customer-history.component';
+import { HistoryItemComponent } from './components/customer-history/history-item/history-item.component'
+import { DateTransformPipe } from './common/DateTransorm.Pipe';
 
 
 const appRoutes: Routes = [
@@ -55,13 +58,17 @@ const appRoutes: Routes = [
     AdminLoginComponent,
     SignUpAdminComponent,
     HomeAdminComponent,
-    RentCarComponent
+    RentCarComponent,
+    CustomerHistoryComponent,
+    HistoryItemComponent,
+    DateTransformPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
+  exports: [DateTransformPipe],
   providers: [CarRentalService,AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })

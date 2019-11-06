@@ -24,6 +24,7 @@ export class CarItemComponent implements OnInit {
 
   rentCar(car: Car): void {
     this.carRentalService.RentedCar = car;
+    console.log(this.carRentalService.RentedCar);
     this.router.navigate(['/rentcar']);
     /*
     if (confirm("Do you really want to rent this car? " + car.Brand)) {

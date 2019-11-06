@@ -1,23 +1,23 @@
-<h3>Car Rented</h3>
+<h3>Car Renting</h3>
 <form (ngSubmit)="onSubmit(f2)" #f2="ngForm" >
 
 
     <label>Customer</label>
     <!-- todo: use pipes here -->
     <div class="form-group">
-        {{carRentalService.Customer.name}}
+        {{customer.name}}
     </div>
 
     <label>Car Brand</label>
     <div class="form-group">
-        {{carRentalService.RentedCar.Brand }}
+        {{carItem.Brand }}
     </div>
     <div>
             <span >
-                    <img [src]="brandImage" class="img-responsive" style="max-height: 50px;">
+                    <img [src]="brandImage" class="img-responsive" style="max-height: 100px;">
                 </span>
                 <span >
-                        <img [src]="carRentalService.RentedCar.Image" class="img-responsive" style="max-height: 50px;">
+                        <img [src]="carItem.Image" class="img-responsive" style="max-height: 100px;">
                     </span>
                 
     </div>

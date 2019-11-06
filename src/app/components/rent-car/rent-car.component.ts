@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Customer } from '../../models/Customer' 
 import { Car } from '../../models/Car' 
 import { CarRentalService } from '../../services/car-rental.service'
+import { AuthService } from '../../services/auth-service'
 import { FormsModule, NgForm } from '@angular/forms';
 
 
@@ -13,22 +14,29 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrls: ['./rent-car.component.css']
 })
 export class RentCarComponent implements OnInit {
-  @Input() carItem:  Car
+  carItem:  Car
   brandImage: string = "";
   dateFrom: Date = new Date();
   dateTo: Date = new Date();
+  customer: Customer;
 
 
-  constructor(public carRentalService: CarRentalService, private router: Router) { 
+  constructor(public carRentalService: CarRentalService, public authService: AuthService, private router: Router) { 
   }
 
   ngOnInit() {
-    this.brandImage = this.carRentalService.GetBrandImage(this.carItem.Brand);
+    this.carItem = this.carRentalService.RentedCar;
+    this.customer = this.authService.getLoggedCustomer();
+    console.log("rent-car-component carItem:", this.carRentalService.RentedCar)
+    console.log("customer:",this.carRentalService.Customer);
+    this.brandImage = this.carRentalService.GetBrandImage(this.carRentalService.RentedCar.Brand);
   }
 
   onSubmit( f: NgForm){
     //todo: send data to service to create a car rejntal instance 
-    this.router.navigate(['/home']);
+    if ( this.carRentalService.Rent(this.customer.name, this.carItem.Id, f.value.dateFrom, f.value.dateTo))
+      this.router.navigate(['/home']);
+    else alert(  this.carRentalService.Message)  ;
   }
 
 }

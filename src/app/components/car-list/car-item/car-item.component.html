@@ -1,10 +1,9 @@
 <div class="list-group-item d-flex justify-content-between align-items-center">
-    <span >{{ carItem.Brand }}</span>
+    <span >
+        <img [src]="brandImage" [alt]= "carItem.Brand" class="img-responsive" style="max-height: 50px;">
+    </span>
     <span >{{ carItem.Model }}</span>
     <span >{{ carItem.Year }}</span>
-    <span >
-        <img [src]="brandImage" class="img-responsive" style="max-height: 50px;">
-    </span>
     <span >
         <img [src]="carItem.Image" class="img-responsive" style="max-height: 40px;">
     </span>

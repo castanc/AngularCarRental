@@ -39,23 +39,32 @@ GetAvailableCars()
     return ac;
 }
 
-Rent(car: Car){
+Rent(customerId: string, _carId: string, dateFrom: Date, dateTo: Date ):boolean{
+    let result = false;
+
     let rentedCar = new CarRental();
-    rentedCar.CarId = car.Id
-    rentedCar.DateStart = new Date()
-    rentedCar.DateEnd = new Date()
+    rentedCar.CarId = _carId;
+    rentedCar.DateStart = dateFrom;
+    rentedCar.DateEnd = dateTo;
     rentedCar.Status = "R"
-    this.CarRentals.push(rentedCar)
-    this.Save()
-    car.Available = false;
+
+    if ( dateTo < dateFrom)
+        this.Message = "Invalid rent dates. Date To must be later than date From";
+    else
+    {
+        this.CarRentals.push(rentedCar)
+        this.Save()
+        let carId = +_carId
+        this.Cars[carId].Available = false
+        console.log('car was rented:',this.Cars[carId] );
+        this.Message = `Car was rented succesfully. Drive carefully, dont drink and drive.`
+        this.OnCarRented.emit();
+        result = true;
+    }
     
-    let carId = +car.Id
-    this.Cars[carId].Available = false
-    console.log('car was rented:', car);
-    this.OnCarRented.emit();
 
     //todo: emit event to update list
-    return true;
+    return result;
 }
 
 CustomerExists(name:string){
@@ -78,12 +87,27 @@ GetUser(name:string){
 }
 
 
+GetCarById(id: string)
+{
+    return this.Cars.filter(x=>x.Id==id)[0];
+}
+
+GetCarsRentalsByCustomer(custId: string)
+{
+    return this.CarRentals.filter( x=> x.CustomerId == custId);
+}
+
 GetBrandImage(brand: string){
     let item = this.Brands.filter(x=> x.Id == brand )[0];
     if ( item == null )
         return this.notFoundIcon;
     else
-        return item.Image;
+    {
+        if ( item.Image == "" )
+            return this.notFoundIcon;
+        else
+            return item.Image;
+    }
 }
 
 
@@ -122,6 +146,8 @@ Save() {
         s = JSON.stringify(this.Users)
         localStorage.setItem("Users",s)
     }
+
+
 }   
 
 

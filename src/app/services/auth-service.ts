@@ -18,7 +18,8 @@ export class AuthService {
         {
           if ( this.Customer.password == password )
           {
-            localStorage.setItem('CustomerLoggedIn', this.Customer.name);
+            let s = JSON.stringify(this.Customer);
+            localStorage.setItem('CustomerLoggedIn', s);
             this.User = null;
             localStorage.removeItem("UserLoggedIn")
             return true
@@ -69,6 +70,12 @@ export class AuthService {
         return lu;
         }
 
+    getLoggedCustomer()
+    {
+        let s = localStorage.getItem('CustomerLoggedIn');
+        return JSON.parse(s);
+    }
+    
 
         getLoggedAdminUser()
         {
