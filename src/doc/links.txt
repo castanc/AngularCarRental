@@ -7,3 +7,15 @@ https://www.pluralsight.com/guides/validating-angular-template-driven-forms
 
 angular material design
 https://www.youtube.com/watch?v=jUfEn032IL8&feature=youtu.be
+
+
+custom validations in template forms\
+https://juristr.com/blog/2016/11/ng2-template-driven-form-validators/
+
+
+custom validators for tempalte forms ( more clear)
+https://juristr.com/blog/2016/11/ng2-template-driven-form-validators/
+
+REACTIVE forms
+https://angular.io/guide/reactive-forms
+

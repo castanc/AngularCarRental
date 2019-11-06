@@ -17,13 +17,23 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { CarItemComponent } from './components/car-list/car-item/car-item.component';
+import { CarRentalListComponent } from './components/car-rental-list/car-rental-list.component';
+import { CarRentalItemComponent } from './components/car-rental-list/car-rental-item/car-rental-item.component';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
+import { SignUpAdminComponent } from './components/sign-up-admin/sign-up-admin.component';
+import { HomeAdminComponent} from './components/home-admin/home-admin.component';
+import { RentCarComponent } from './components/rent-car/rent-car.component'
 
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuardService]},
   { path: 'home', component: HomeComponent,canActivate: [AuthGuardService] },
+  { path: 'admin', component: HomeComponent,canActivate: [AuthGuardService] },
+  { path: 'homeadm', component: HomeAdminComponent,canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
+  { path: 'signupadmin', component: SignUpAdminComponent },
+  { path: 'rentcar', component: RentCarComponent },
   { path: '**', component: PageNotFoundComponent },
 
 ];
@@ -39,7 +49,13 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    CarItemComponent
+    CarItemComponent,
+    CarRentalListComponent,
+    CarRentalItemComponent,
+    AdminLoginComponent,
+    SignUpAdminComponent,
+    HomeAdminComponent,
+    RentCarComponent
   ],
   imports: [
     BrowserModule,

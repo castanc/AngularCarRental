@@ -3,4 +3,5 @@ export class CarRental {
     DateStart: Date
     DateEnd : Date
     CustomerId: string
+    Status: string
 }

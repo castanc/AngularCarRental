@@ -31,6 +31,25 @@ export class AuthService {
           }
         }
       }
+
+      loginAdmin(userName: string, password: string): boolean {
+        this.User = this.carRentalService.GetUser(userName)
+        if ( this.User != null)
+        {
+          if ( this.User.password == password )
+          {
+            localStorage.setItem('UserLoggedIn', this.Customer.name);
+            this.User = null;
+            return true
+          }
+          else
+          {
+            this.carRentalService.Message = "Invalide passowrd"
+            alert(this.carRentalService.Message)
+            return false;
+          }
+        }
+      }
     
       logout(): void {
         localStorage.removeItem('CustomerLoggedIn');
@@ -50,7 +69,23 @@ export class AuthService {
         return lu;
         }
 
+
+        getLoggedAdminUser()
+        {
+            let lu = '';
+            lu =  localStorage.getItem('UserLoggedIn');
+            if ( lu == null )
+              lu = '';
+            return lu;
+            }
+    
     isLogged(){
         return localStorage.getItem('CustomerLoggedIn') !== null;
     }
+
+
+    isLoggedAdminUser(){
+      return localStorage.getItem('UserLoggedIn') !== null;
+  }
+
 }
