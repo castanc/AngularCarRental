@@ -1,14 +1,21 @@
 <div *ngIf="authService.isLogged()">
     <i class="fa fa-bars" style="font-size:36px" (click)="menu.toggle($event)"></i>
-    <i class="fa fa-file-o" style="font-size:36px"></i>
+    <i class="fa fa-home" style="font-size:36px"
+    (click)="GoHome()"></i>
+    <!--
 <i class="fa fa-sign-in" style="font-size:36px"></i>
 <i class="fa fa-tags" style="font-size:36px"></i>
+-->
 <i class="fa fa-car" style="font-size:36px"
-    (click)="GoHome()"
+    (click)="GoMyRents()"
     ></i>
 <i class="fa fa-sign-out" style="font-size:36px"
     (click)="authService.logout()"></i>
+    <i class="fa fa-user-plus" style="font-size:36px"
+    (click)="SignUp()"></i>
+    <!--
 <i class="fa fa-cog" style="font-size:36px"></i>
+-->
 </div>
 
 <div *ngIf="authService.isLoggedAdminUser()">

@@ -19,3 +19,8 @@ https://juristr.com/blog/2016/11/ng2-template-driven-form-validators/
 REACTIVE forms
 https://angular.io/guide/reactive-forms
 
+
+confirmation validation
+https://disq.us/url?url=https%3A%2F%2Fscotch.io%2Ftutorials%2Fhow-to-implement-a-custom-validator-directive-confirm-password-in-angular-2%3AfZhWRz9vKniLi0myib_1rgTTrzc&cuid=1748965
+
+

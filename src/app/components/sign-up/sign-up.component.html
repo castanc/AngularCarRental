@@ -1,5 +1,9 @@
 <h3>Sign Up</h3>
-<form (ngSubmit)="onSubmit(f2)" #f2="ngForm" ngNativeValidate >
+<!--
+    ngNativeValidate
+-->
+<div class="col-lg-6">
+        <form (ngSubmit)="f2.valid && onSubmit(f2)" #f2="ngForm" ngNativeValidate >
 
 
     <label>User Name</label>
@@ -40,10 +44,16 @@
             </div>
 
 
-            <label class="form-control-label" for="email">Email</label>  
+            <label>Email</label> 
+            <div class="form-group">
             <input type="email" class="form-control" name="emailText" 
             [(ngModel)]="emailText" required  
+            (focusout)="validateEmail(emailText)"
             #email="ngModel">  
+        </div>
+        <p *ngIf="!isValid">
+                {{message}}        
+            </p>
 
 
             <label>Password</label>
@@ -67,13 +77,15 @@
                 ngModel
                 name = "newPassword"
                 #newPassword="ngModel">
-                <span class="help-block" *ngIf="!newPassword.valid && newPassword.touched">Please confirm your password</span>
-                <span class="help-block" *ngIf="password.valid && newPassword.touched && password != newPassword">Password and Confirm password must be equal</span>
 </div>    
+<span class="help-block" *ngIf="!newPassword.valid && newPassword.touched">Please confirm your password</span>
+<span class="help-block" *ngIf="password.valid && newPassword.touched && password.value != newPassword.value">Password and Confirm password must be equal</span>
 
+<div class="row">
 <button 
 class="btn btn-primary" 
 [disabled]="!f2.valid"
 type="submit">Sign Up</button>
-
+</div>
 </form>
+</div>

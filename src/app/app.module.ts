@@ -27,6 +27,8 @@ import { CustomerHistoryComponent } from './components/customer-history/customer
 import { HistoryItemComponent } from './components/customer-history/history-item/history-item.component'
 import { DateTransformPipe } from './common/DateTransorm.Pipe';
 import { MyRentsComponent } from './components/my-rents/my-rents.component';
+import  { EmailValidator } from './common/validate-email-directive'
+import {validateEmailFactory } from './common/validate-email-factory'
 
 
 const appRoutes: Routes = [
@@ -64,7 +66,8 @@ const appRoutes: Routes = [
     CustomerHistoryComponent,
     HistoryItemComponent,
     DateTransformPipe,
-    MyRentsComponent
+    MyRentsComponent,
+    EmailValidator
   ],
   imports: [
     BrowserModule,

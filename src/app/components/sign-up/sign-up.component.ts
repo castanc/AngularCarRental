@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Customer } from '../../models/customer'
 
 import { CarRentalService } from '../../services/car-rental.service'
-import { EmailValidator } from '../../common/email-validator'
 
 @Component({
   selector: 'app-sign-up',
@@ -21,9 +20,25 @@ export class SignUpComponent implements OnInit {
   password: string = ""
   emailText: string = "";
 
+  isValid = false;
+  message = "";
+
 
   constructor(public carRentalService: CarRentalService,
     private router: Router) { }
+
+
+    validateEmail(email:string)
+    {
+      console.log("ValidateEmail");
+      this.isValid = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/.test(email);  
+      this.message = "";
+      if ( !this.isValid)
+      {
+        this.message = "Invalid email address";
+      }
+
+    }
 
   ngOnInit() {
     console.log("sign up")
@@ -42,11 +57,6 @@ export class SignUpComponent implements OnInit {
 
         if (this.carRentalService.AddCustomer(cu))
           this.router.navigate(['/login']);
-
-
-
-        
-
     }
     else this.carRentalService.Message = "Form is invalid.";
   }

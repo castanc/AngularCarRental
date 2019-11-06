@@ -23,9 +23,17 @@ export class MainmenuComponent implements OnInit, OnDestroy {
   }
 
   GoHome(){
-    this.router.navigate(["/Home"])
+    this.router.navigate(["/home"])
   }
 
+  GoMyRents()
+  {
+    this.router.navigate(['/myrents']);
+  }
+
+SignUp(){
+  this.router.navigate(['/signup']);
+}
 
   GoHomeAdmin(){
     this.router.navigate(["/Homeadmin"])

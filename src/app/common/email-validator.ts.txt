@@ -13,12 +13,12 @@ import {
   providers: [  
    {  
     provide: NG_VALIDATORS,  
-    useExisting: EmailValidator,  
+    useExisting: EmailValidator0,  
     multi: true  
    }  
   ]  
  })  
- export class EmailValidator implements Validator {  
+ export class EmailValidator0 implements Validator {  
   validator: ValidatorFn;  
   constructor() {  
    this.validator = this.emailValidator();  
