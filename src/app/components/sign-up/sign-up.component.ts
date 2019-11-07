@@ -71,7 +71,9 @@ export class SignUpComponent implements OnInit {
         cu.phone = f.value.phone
 
         if (this.carRentalService.AddCustomer(cu))
+        {
           this.router.navigate(['/login']);
+        }
         else alert(this.carRentalService.Message);
     }
     else this.carRentalService.Message = "Form is invalid.";

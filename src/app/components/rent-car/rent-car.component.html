@@ -2,16 +2,18 @@
 <form (ngSubmit)="onSubmit(f2)" #f2="ngForm" >
 
 
-    <label>Customer</label>
+    <strong><label>Customer:</label></strong>
     <!-- todo: use pipes here -->
-    <div class="form-group">
         {{customer.name}}
-    </div>
+    <strong>
 
-    <label>Car Brand</label>
-    <div class="form-group">
+    
+    <label>Car: </label></strong>
         {{carItem.Brand }}
-    </div>
+        {{carItem.Model  }}
+        {{carItem.Year  }}
+
+
     <div>
             <span >
                     <img [src]="brandImage" class="img-responsive" style="max-height: 100px;">
@@ -22,9 +24,8 @@
                 
     </div>
 
-
     <label>Date From</label>
-    <div class="form-group">
+    <div class="form-group col-lg-6">
         <input class="form-control input-lg"
         type="date" 
         placeholder="Date From" 
@@ -36,7 +37,7 @@
         </div>
     
         <label>Date to</label>
-        <div class="form-group">
+        <div class="form-group col-lg-6">
             <input class="form-control input-lg"
             type="date" 
             placeholder="Date to" 
@@ -46,7 +47,6 @@
             #firstName="ngModel">
                 <span class="help-block" *ngIf="!dateTo.valid && dateTo.touched">Please enter date toyour User Name</span>
             </div>
-
 
 
 

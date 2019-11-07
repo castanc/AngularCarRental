@@ -24,8 +24,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     console.log("login")
     this.userName = "";
-    if ( this.carRentalService.NoCustomers )
-      this.router.navigate(['/signup']);
+    //if ( this.carRentalService.NoCustomers )
+    //  this.router.navigate(['/signup']);
   }
 
   onSubmit( f: NgForm){

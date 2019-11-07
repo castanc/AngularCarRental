@@ -1,25 +1,26 @@
 <h3>Admin Login</h3>
 
+<div class="col-lg-6">
 <form (ngSubmit)="onSubmit(f2)" #f2="ngForm">
 
-    <div class="form-group">
     <label>User Name</label>
+    <div class="form-group">
     <input class="form-control input-lg"
     type="text" 
-    placeholder="Admin User Name" 
+    placeholder="User Name" 
     ngModel
     name = "userName"
     required
     #userName="ngModel">
         <span class="help-block" *ngIf="!userName.valid && userName.touched">Please your User Name</span>
-        <span class="help-block" *ngIf="userName.valid && !carRentalService.UserExists(userName)">User doesn't exist</span>
+        <span class="help-block" *ngIf="userName.valid && !authService.AdminUserExists(userName.value)">User doesn't exist</span>
     </div>
 
-<div class="form-group">
     <label>Password</label>
+<div class="form-group">
         <input 
     type="password" 
-    placeholder="Admin Password" 
+    placeholder="Password"  
     ngModel
     name = "password"
     #password="ngModel">
@@ -30,7 +31,11 @@
 class="btn btn-primary" 
 [disabled]="!f2.valid"
 type="submit">Sign In</button>
+<div>
+<a [routerLink]="['/signup']">Not Registered? Sign Up</a>
+</div>
 
-<a [routerLink]="['/signupadmin']">New User</a>
+
 
 </form>
+</div>

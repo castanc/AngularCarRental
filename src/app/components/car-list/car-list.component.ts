@@ -22,7 +22,7 @@ export class CarListComponent implements OnInit {
     this.AvailableCars = this.carRentalService.GetAvailableCars();
     this.OnCarRented = this.carRentalService.OnCarRented.subscribe(() => {
         console.log("car-list-component OnCarRented envent");
-        alert("Subscription message to OnCarRented: A car was rented");
+        //alert("Subscription message to OnCarRented: A car was rented");
         this.AvailableCars = this.carRentalService.GetAvailableCars();
       })
   }

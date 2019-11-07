@@ -36,7 +36,7 @@ export class RentCarComponent implements OnInit {
   onSubmit( f: NgForm){
     //todo: send data to service to create a car rejntal instance 
     if ( this.carRentalService.Rent(this.customer.name, this.carItem.Id, f.value.dateFrom, f.value.dateTo))
-      this.router.navigate(['/home']);
+      this.router.navigate(['/myrents']);
     else alert(  this.carRentalService.Message)  ;
   }
 

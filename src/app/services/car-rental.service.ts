@@ -67,9 +67,6 @@ ngOnInit(){
 
 GetAvailableCars()
 {
-    if ( this.Cars.length == 0) {
-        this.LoadCars()
-    }
     let ac = this.Cars.filter(x=>x.Available == true)
     console.log("avaliable cars:",ac)
     return ac;
@@ -154,22 +151,22 @@ GetBrandImage(brand: string){
     
 AddCustomer( cu: Customer):boolean
 {
-    console.log(cu)
+    console.log("add Customer:",cu);
     if ( !this.CustomerExists(cu.name))
     {
         this.Customer = cu;
         this.Customers.push(cu);
         this.Message = "Customer Added succesfully."
+        console.log(this.Message);
         this.Save();
-        console.log(this.Customers)
         return true;
     }
     else{
         this.Message = "Customer name is already used.";
-        alert(`Customer ${cu.name} is already used`)
+        //alert(`Customer ${cu.name} is already used`)
         console.log(`Customer ${cu.name} is already used`)
-        console.log(this.Customers)
     }
+    console.log(this.Customers)
     return false;
 }
 
@@ -178,9 +175,8 @@ Save() {
     localStorage.setItem('Customers', s)
 
     this.carsText = JSON.stringify(this.Cars)
-    console.debug(this.carsText);
-
-    localStorage.setItem("Cars",s)
+    localStorage.setItem("Cars",this.carsText)
+    this.carsText = "";
 
     this.brandsText = JSON.stringify(this.Brands)
     console.debug(this.brandsText);
@@ -255,19 +251,30 @@ LoadCars(){
 
 Load() {
 
+    console.log("carRentalService.Load()");
     this.populateBrands();
     let s = localStorage.getItem("Customers")
     this.Customers = JSON.parse(s)
     if ( this.Customers == null )
         this.Customers = []
+    console.log("load customers", this.Customers.length);
+    console.log("load customers", this.Customers);
 
-    if ( this.Cars == null  || this.Cars.length == 0) {
-        s = localStorage.getItem("Cars")    
-        this.Cars = JSON.parse(s)
-    }
-    if ( this.Cars == null  || this.Cars.length == 0) {
+
+    console.log("carRentalService.Load()","laoding from localstorage");
+    this.carsText = localStorage.getItem("Cars")    
+    this.Cars = JSON.parse(this.carsText)
+    if ( this.Cars == null)
+        this.Cars = [];
+
+    console.log("loaded cars from localstorage:",this.Cars.length);
+    this.carsText = "";
+
+    if ( this.Cars.length == 0) {
+        console.log("loading cars from JSON file");
         alert("Loaded cars are empty, getting from JSON File");
         this.loadCarsJSON();
+        console.log(this.carsText);
         //this.populateCars();
     }
 

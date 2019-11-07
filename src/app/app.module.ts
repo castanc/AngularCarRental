@@ -19,31 +19,28 @@ import { HomeComponent } from './components/home/home.component';
 import { CarItemComponent } from './components/car-list/car-item/car-item.component';
 import { CarRentalListComponent } from './components/car-rental-list/car-rental-list.component';
 import { CarRentalItemComponent } from './components/car-rental-list/car-rental-item/car-rental-item.component';
-import { AdminLoginComponent } from './components/admin-login/admin-login.component';
-import { SignUpAdminComponent } from './components/sign-up-admin/sign-up-admin.component';
-import { HomeAdminComponent} from './components/home-admin/home-admin.component';
 import { RentCarComponent } from './components/rent-car/rent-car.component';
 import { CustomerHistoryComponent } from './components/customer-history/customer-history.component';
 import { HistoryItemComponent } from './components/customer-history/history-item/history-item.component'
 import { DateTransformPipe } from './common/DateTransorm.Pipe';
 import { MyRentsComponent } from './components/my-rents/my-rents.component';
-import  { EmailValidator } from './common/validate-email-directive'
-import {validateEmailFactory } from './common/validate-email-factory'
+import { EmailValidator } from './common/validate-email-directive'
+import { validateEmailFactory } from './common/validate-email-factory'
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
+import { AdminModule } from './admin/admin.module'
+import { AdminRoutingModule } from './admin/admin-routing.module'
+import { AppRoutingModule } from './app.routing.module'
 
 
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuardService]},
   { path: 'home', component: HomeComponent,canActivate: [AuthGuardService] },
-  { path: 'admin', component: HomeComponent,canActivate: [AuthGuardService] },
-  { path: 'homeadm', component: HomeAdminComponent,canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
-  { path: 'signupadmin', component: SignUpAdminComponent },
-  { path: 'rentcar', component: RentCarComponent },
-  { path: 'myrents', component: MyRentsComponent },
+  { path: 'rentcar', component: RentCarComponent,canActivate: [AuthGuardService] },
+  { path: 'myrents', component: MyRentsComponent,canActivate: [AuthGuardService] },
   { path: '**', component: PageNotFoundComponent },
 
 ];
@@ -62,9 +59,6 @@ const appRoutes: Routes = [
     CarItemComponent,
     CarRentalListComponent,
     CarRentalItemComponent,
-    AdminLoginComponent,
-    SignUpAdminComponent,
-    HomeAdminComponent,
     RentCarComponent,
     CustomerHistoryComponent,
     HistoryItemComponent,
@@ -76,7 +70,11 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    AdminModule,
+    AdminRoutingModule,
+    AppRoutingModule
+    
   ],
   exports: [DateTransformPipe],
   providers: [CarRentalService,AuthService, AuthGuardService],
