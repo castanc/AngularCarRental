@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { Output, OnInit } from '@angular/core';
 import { User } from '../models/user'
 import { Customer } from '../models/customer'
@@ -8,10 +9,16 @@ import { Brand } from '../models/Brand'
 import { EventEmitter } from "@angular/core";
 import { FormsModule, NgForm } from '@angular/forms';
 import { debug } from 'util';
-import { HttpClient } from 'selenium-webdriver/http';
 //import  *  as  brands  from  '../brands.json';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
+@Injectable({
+    providedIn: 'root'
+  })
 export class CarRentalService implements OnInit{
+    private _jsonURL = 'assets/cars.json';
     public OnCarRented = new EventEmitter();    
     user: User = null;
 
@@ -29,7 +36,30 @@ export class CarRentalService implements OnInit{
 
     u: Utils = new Utils();
 
-Message: string = "Welcome to the Car Rental";
+    Message: string = "Welcome to the Car Rental";
+
+    constructor(public http: HttpClient){}
+
+    public getJSON(): Observable<any> {
+        return this.http.get(this._jsonURL);
+      }
+
+      public loadCarsJSON():Promise<Car[]>{
+        return new Promise ((resolve,reject)=>{
+          this.http.get<Car[]>('assets/cars.json')
+          .subscribe((response)=>{
+            this.Cars=response;
+            console.log("loadCarsJson", this.Cars);
+            resolve(response);
+          },
+          (error)=>{
+            console.log('Error: ',error);
+            reject(error);
+          }
+          );
+        });
+        
+      }      
 
 ngOnInit(){
 }
@@ -236,10 +266,10 @@ Load() {
         this.Cars = JSON.parse(s)
     }
     if ( this.Cars == null  || this.Cars.length == 0) {
-        alert("laoded cars are empty");
-        this.populateCars();
+        alert("Loaded cars are empty, getting from JSON File");
+        this.loadCarsJSON();
+        //this.populateCars();
     }
-    this.populateCars();
 
     console.log("cars  Load()", this.Cars.length)
     

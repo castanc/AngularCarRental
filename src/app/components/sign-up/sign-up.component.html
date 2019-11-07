@@ -45,6 +45,18 @@
             </div>
 
 
+            <label>Phone</label>
+            <div class="form-group">
+                <input class="form-control input-lg"
+                type="number" 
+                placeholder="Customer Phone number" 
+                ngModel
+                name = "phone"
+                required
+                #phone="ngModel">
+                    <span class="help-block" *ngIf="!phone.valid && phone.touched">Please enter your phone number</span>
+                </div>
+
             <label>Email</label> 
             <div class="form-group">
             <input type="email" class="form-control" name="emailText" 

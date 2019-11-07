@@ -29,6 +29,9 @@ import { DateTransformPipe } from './common/DateTransorm.Pipe';
 import { MyRentsComponent } from './components/my-rents/my-rents.component';
 import  { EmailValidator } from './common/validate-email-directive'
 import {validateEmailFactory } from './common/validate-email-factory'
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+
 
 
 const appRoutes: Routes = [
@@ -67,12 +70,13 @@ const appRoutes: Routes = [
     HistoryItemComponent,
     DateTransformPipe,
     MyRentsComponent,
-    EmailValidator
+    EmailValidator,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   exports: [DateTransformPipe],
   providers: [CarRentalService,AuthService, AuthGuardService],

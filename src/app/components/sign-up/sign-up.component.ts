@@ -68,9 +68,11 @@ export class SignUpComponent implements OnInit {
         cu.lastName = f.value.lastName
         cu.password = f.value.password
         cu.name = f.value.userName
+        cu.phone = f.value.phone
 
         if (this.carRentalService.AddCustomer(cu))
           this.router.navigate(['/login']);
+        else alert(this.carRentalService.Message);
     }
     else this.carRentalService.Message = "Form is invalid.";
   }

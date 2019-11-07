@@ -15,6 +15,10 @@
     <!--
 <i class="fa fa-cog" style="font-size:36px"></i>
 -->
+<div>
+    Welcome {{authService.getLoggedCustomer().name}}
+    {{now|date: 'longDate'}}
+</div>
 </div>
 
 <div *ngIf="authService.isLoggedAdminUser()">
