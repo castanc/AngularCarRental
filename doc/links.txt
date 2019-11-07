@@ -24,3 +24,9 @@ confirmation validation
 https://disq.us/url?url=https%3A%2F%2Fscotch.io%2Ftutorials%2Fhow-to-implement-a-custom-validator-directive-confirm-password-in-angular-2%3AfZhWRz9vKniLi0myib_1rgTTrzc&cuid=1748965
 
 
+load lcoal json files with typescript
+https://www.techiediaries.com/import-local-json-files-in-typescript/
+
+read local file with http.get
+https://stackoverflow.com/questions/44042223/load-json-from-local-file-with-http-get-in-angular-2/47023181
+

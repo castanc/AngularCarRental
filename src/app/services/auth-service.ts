@@ -1,8 +1,9 @@
-import { Inject } from '@angular/core';
+import { Inject, ɵRenderDebugInfo } from '@angular/core';
 import { Router } from '@angular/router';
 import { Customer } from '../models/customer'
 import { CarRentalService } from '../services/car-rental.service'
 import { User } from '../models/user'
+import { debug } from 'util';
 
 @Inject('')
 export class AuthService {
@@ -57,7 +58,7 @@ export class AuthService {
         localStorage.removeItem("UserLoggedIn")
         this.User = null;
         this.Customer = null;
-
+        this.carRentalService.Save();
         this.router.navigate(['/login']);
       }
     

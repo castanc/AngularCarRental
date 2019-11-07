@@ -7,6 +7,9 @@ import { CarRental } from '../models/car-rental'
 import { Brand } from '../models/Brand'
 import { EventEmitter } from "@angular/core";
 import { FormsModule, NgForm } from '@angular/forms';
+import { debug } from 'util';
+import { HttpClient } from 'selenium-webdriver/http';
+//import  *  as  brands  from  '../brands.json';
 
 export class CarRentalService implements OnInit{
     public OnCarRented = new EventEmitter();    
@@ -21,6 +24,8 @@ export class CarRentalService implements OnInit{
     Brands: Array<Brand> = []
     notFoundIcon: string = "data:image/png;base64,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"
     RentedCar: Car;
+    carsText = "";
+    brandsText = "";
 
     u: Utils = new Utils();
 
@@ -28,6 +33,7 @@ Message: string = "Welcome to the Car Rental";
 
 ngOnInit(){
 }
+
 
 GetAvailableCars()
 {
@@ -115,7 +121,7 @@ GetBrandImage(brand: string){
     }
 }
 
-
+    
 AddCustomer( cu: Customer):boolean
 {
     console.log(cu)
@@ -141,8 +147,13 @@ Save() {
     let s = JSON.stringify(this.Customers)
     localStorage.setItem('Customers', s)
 
-    s = JSON.stringify(this.Cars)
+    this.carsText = JSON.stringify(this.Cars)
+    console.debug(this.carsText);
+
     localStorage.setItem("Cars",s)
+
+    this.brandsText = JSON.stringify(this.Brands)
+    console.debug(this.brandsText);
 
     s = JSON.stringify(this.CarRentals)
     localStorage.setItem("CarRentals",s)
@@ -201,7 +212,7 @@ populateCars(){
 }
 
 LoadCars(){
-    this.populateBrands();
+    //this.populateBrands();
     if ( this.Cars.length == 0 ){
         let s = localStorage.getItem("Cars")    
         this.Cars = JSON.parse(s)
@@ -213,17 +224,23 @@ LoadCars(){
 }
 
 Load() {
+
+    this.populateBrands();
     let s = localStorage.getItem("Customers")
     this.Customers = JSON.parse(s)
     if ( this.Customers == null )
         this.Customers = []
 
-        
-    s = localStorage.getItem("Cars")    
-    this.Cars = JSON.parse(s)
-    if ( this.Cars == null ) {
+    if ( this.Cars == null  || this.Cars.length == 0) {
+        s = localStorage.getItem("Cars")    
+        this.Cars = JSON.parse(s)
+    }
+    if ( this.Cars == null  || this.Cars.length == 0) {
+        alert("laoded cars are empty");
         this.populateCars();
     }
+    this.populateCars();
+
     console.log("cars  Load()", this.Cars.length)
     
 

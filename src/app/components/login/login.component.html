@@ -3,8 +3,8 @@
 <div class="col-lg-6">
 <form (ngSubmit)="onSubmit(f2)" #f2="ngForm">
 
-    <div class="form-group">
     <label>User Name</label>
+    <div class="form-group">
     <input class="form-control input-lg"
     type="text" 
     placeholder="Customer User Name" 
@@ -13,11 +13,11 @@
     required
     #userName="ngModel">
         <span class="help-block" *ngIf="!userName.valid && userName.touched">Please your User Name</span>
-        <span class="help-block" *ngIf="userName.valid && !carRentalService.CustomerExists(userName)">User doesn't exist</span>
+        <span class="help-block" *ngIf="userName.valid && !carRentalService.CustomerExists(userName.value)">User doesn't exist</span>
     </div>
 
-<div class="form-group">
     <label>Password</label>
+<div class="form-group">
         <input 
     type="password" 
     placeholder="Password" 

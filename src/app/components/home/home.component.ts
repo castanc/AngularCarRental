@@ -15,8 +15,8 @@ export class HomeComponent implements OnInit {
   constructor(public carRentalService: CarRentalService, public authGuardService: AuthGuardService, public router:  Router) { }
 
   ngOnInit() {
-    console.log("HomeCOmponent")
-    this.carRentalService.LoadCars()
+    //console.log("HomeCOmponent")
+    //this.carRentalService.Load()
   }
 
   myRents()

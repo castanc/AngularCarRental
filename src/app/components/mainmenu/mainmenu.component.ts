@@ -15,7 +15,7 @@ export class MainmenuComponent implements OnInit, OnDestroy {
     public carRentalService: CarRentalService, private router: Router ) { }
 
   ngOnInit() {
-    this.carRentalService.Load();
+    //this.carRentalService.Load();
   }
 
   ngOnDestroy(){
