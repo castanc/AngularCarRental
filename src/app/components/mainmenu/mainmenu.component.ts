@@ -29,7 +29,7 @@ export class MainmenuComponent implements OnInit, OnDestroy {
   }
 
   Settings(){
-
+    this.carRentalService.reset();
   }
   
   GoMyRents()
@@ -37,6 +37,7 @@ export class MainmenuComponent implements OnInit, OnDestroy {
     this.router.navigate(['/myrents']);
   }
 
+  
 SignUp(){
   this.router.navigate(['/signup']);
 }

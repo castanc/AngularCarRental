@@ -148,6 +148,16 @@ GetBrandImage(brand: string){
     }
 }
 
+
+reset()
+{
+    if ( confirm("Are you sure you want to reset the data?"))
+    {
+        this.CarRentals = [];
+        this.loadCarsJSON();
+        this.Message = "data was reset";
+    }
+}
     
 AddCustomer( cu: Customer):boolean
 {
