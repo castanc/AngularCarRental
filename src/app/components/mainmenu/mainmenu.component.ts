@@ -28,6 +28,10 @@ export class MainmenuComponent implements OnInit, OnDestroy {
     this.router.navigate(["/home"])
   }
 
+  Settings(){
+
+  }
+  
   GoMyRents()
   {
     this.router.navigate(['/myrents']);
