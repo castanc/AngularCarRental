@@ -28,9 +28,9 @@ import { EmailValidator } from './common/validate-email-directive'
 import { validateEmailFactory } from './common/validate-email-factory'
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
-import { AdminModule } from './admin/admin.module'
-import { AdminRoutingModule } from './admin/admin-routing.module'
-import { AppRoutingModule } from './app.routing.module'
+//import { AdminModule } from './admin/admin.module'
+//import { AdminRoutingModule } from './admin/admin-routing.module'
+//import { AppRoutingModule } from './app.routing.module'
 
 
 
@@ -71,9 +71,9 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-    AdminModule,
-    AdminRoutingModule,
-    AppRoutingModule
+    //AdminModule,
+    //AdminRoutingModule,
+    //AppRoutingModule
     
   ],
   exports: [DateTransformPipe],

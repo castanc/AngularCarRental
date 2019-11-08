@@ -8,7 +8,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 const routes: Routes = [
 
 {
-    path:'cars',
+    path:'admin',
     loadChildren:() => AdminModule,
   },
 
