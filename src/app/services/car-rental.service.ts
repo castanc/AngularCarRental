@@ -90,12 +90,12 @@ Rent(customerId: string, _carId: string, dateFrom: Date, dateTo: Date ):boolean{
         console.log("Rent:", rentedCar);
         this.CarRentals.push(rentedCar)
         console.log(this.CarRentals);
-        this.Save()
         let carId = +_carId
         this.Cars[carId].Available = false
         console.log('car was rented:',this.Cars[carId] );
         console.log("rented cars",this.CarRentals);
         this.Message = `Car was rented succesfully. Drive carefully, dont drink and drive.`
+        this.Save()
         this.OnCarRented.emit();
         result = true;
     }
