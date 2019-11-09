@@ -30,3 +30,9 @@ https://www.techiediaries.com/import-local-json-files-in-typescript/
 read local file with http.get
 https://stackoverflow.com/questions/44042223/load-json-from-local-file-with-http-get-in-angular-2/47023181
 
+hwo to create modules
+https://appdividend.com/2018/12/09/how-to-create-angular-modules-to-organize-code/
+
+
+working with git branches
+https://thenewstack.io/dont-mess-with-the-master-working-with-branches-in-git-and-github/
