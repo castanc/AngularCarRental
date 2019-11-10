@@ -21,6 +21,7 @@ export class CarRentalService implements OnInit{
     private _jsonURL = 'assets/cars.json';
     public OnCarRented = new EventEmitter();    
     user: User = null;
+    serverAddress:  string = "http://192.168.1.2:3000/";
 
     Users: Array<User> = []
     NoCustomers: boolean = false;
@@ -59,7 +60,42 @@ export class CarRentalService implements OnInit{
           );
         });
         
-      }      
+      }     
+
+      public loadCollection<T>(coll:T, address: string):Promise<T>{
+        return new Promise ((resolve,reject)=>{
+          this.http.get<T>(address)
+          .subscribe((response)=>{
+            coll=response;
+            console.log("loadCarsJson", coll);
+            resolve(response);
+          },
+          (error)=>{
+            console.log('Error: ',error);
+            reject(error);
+          }
+          );
+        });
+        
+      }     
+
+      
+      public loadCarsServer():Promise<Car[]>{
+        return new Promise ((resolve,reject)=>{
+          this.http.get<Car[]>(`${this.serverAddress}/LoadCars`)
+          .subscribe((response)=>{
+            this.Cars=response;
+            console.log("loadCarsJson", this.Cars);
+            resolve(response);
+          },
+          (error)=>{
+            console.log('Error: ',error);
+            reject(error);
+          }
+          );
+        });
+        
+      }     
 
 ngOnInit(){
 }
@@ -283,9 +319,11 @@ Load() {
     if ( this.Cars.length == 0) {
         console.log("loading cars from JSON file");
         alert("Loaded cars are empty, getting from JSON File");
-        this.loadCarsJSON();
-        console.log(this.carsText);
         //this.populateCars();
+        //this.loadCarsJSON();
+        //this.loadCarsServer();
+        this.loadCollection<Array<Car>>(this.Cars,`${this.serverAddress}/LoadCars`);
+        console.log(this.carsText);
     }
 
     console.log("cars  Load()", this.Cars.length)

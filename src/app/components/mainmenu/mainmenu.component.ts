@@ -17,7 +17,7 @@ export class MainmenuComponent implements OnInit, OnDestroy {
     now: Date = new Date();
 
   ngOnInit() {
-    //this.carRentalService.Load();
+    
   }
 
   ngOnDestroy(){

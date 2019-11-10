@@ -36,3 +36,7 @@ https://appdividend.com/2018/12/09/how-to-create-angular-modules-to-organize-cod
 
 working with git branches
 https://thenewstack.io/dont-mess-with-the-master-working-with-branches-in-git-and-github/
+
+
+cors error accessing angular-node
+https://stackoverflow.com/questions/54266425/http-request-to-a-local-node-server-from-local-angular-project-cors-err
